@@ -9,7 +9,7 @@ from django.views import View
 from .forms import AddCommentForm
 from .models import Lead
 
-from client.models import Client
+from client.models import Client, Comment as ClientComment
 from team.models import Team
 
 
@@ -32,6 +32,12 @@ class LeadDetailView(DetailView):  # детали заявок
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = AddCommentForm()
+
+        return context
 
     def get_queryset(self):
         queryset = super(LeadDetailView, self).get_queryset()
@@ -105,6 +111,23 @@ class LeadCreateView(CreateView):  # создать заявку
         return redirect(self.get_success_url())
 
 
+class AddCommentView(View):
+    def post(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
+
+        form = AddCommentForm(request.POST)
+
+        if form.is_valid():
+            team = Team.objects.filter(created_by=self.request.user)[0]
+            comment = form.save(commit=False)
+            comment.team = team
+            comment.created_by = request.user
+            comment.lead_id = pk
+            comment.save()
+
+        return redirect('leads:detail', pk=pk)
+
+
 class ConvertToClientView(View):  # добавить в потенциальные клиенты
     def get(self, request, *args, **kwargs):
         pk = self.kwargs.get('pk')
@@ -123,6 +146,19 @@ class ConvertToClientView(View):  # добавить в потенциальны
         lead.converted_to_client = True
         lead.save()
 
+        # Преобразовываем комментарии заявок в комментарии клиентов
+
+        comments = lead.comments.all()
+
+        for comment in comments:
+            ClientComment.objects.create(
+                client=client,
+                content=comment.content,
+                created_by=comment.created_by,
+                team=team
+            )
+
+        # Показать сообщение перенаправить и сохранить сообщение
         messages.success(request, 'The lead was converted to a client.')
 
         return redirect('leads:list')
