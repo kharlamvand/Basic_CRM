@@ -1,11 +1,11 @@
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, get_object_or_404
+# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
+# from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, DeleteView, UpdateView, CreateView
 from django.views import View
-
 from .forms import AddCommentForm, AddFileForm
 from .models import Lead
 
@@ -13,12 +13,12 @@ from client.models import Client, Comment as ClientComment
 from team.models import Team
 
 
-class LeadListView(ListView):  # список заявок
+class LeadListView(LoginRequiredMixin, ListView):  # список заявок
     model = Lead
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
+    # @method_decorator(login_required)
+    # def dispatch(self, *args, **kwargs):
+    #     return super().dispatch(*args, **kwargs)
 
     def get_queryset(self):
         queryset = super(LeadListView, self).get_queryset()
@@ -26,12 +26,12 @@ class LeadListView(ListView):  # список заявок
         return queryset.filter(created_by=self.request.user, converted_to_client=False)
 
 
-class LeadDetailView(DetailView):  # детали заявок
+class LeadDetailView(LoginRequiredMixin, DetailView):  # детали заявок
     model = Lead
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
+    # @method_decorator(login_required)
+    # def dispatch(self, *args, **kwargs):
+    #     return super().dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -46,13 +46,13 @@ class LeadDetailView(DetailView):  # детали заявок
         return queryset.filter(created_by=self.request.user, pk=self.kwargs.get('pk'))
 
 
-class LeadDeleteView(DeleteView):  # удалить заявку
+class LeadDeleteView(LoginRequiredMixin, DeleteView):  # удалить заявку
     model = Lead
     success_url = reverse_lazy('leads:list')
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
+    # @method_decorator(login_required)
+    # def dispatch(self, *args, **kwargs):
+    #     return super().dispatch(*args, **kwargs)
 
     def get_queryset(self):
         queryset = super(LeadDeleteView, self).get_queryset()
@@ -63,14 +63,14 @@ class LeadDeleteView(DeleteView):  # удалить заявку
         return self.post(request, *args, **kwargs)
 
 
-class LeadUpdateView(UpdateView):  # редактировать заявку
+class LeadUpdateView(LoginRequiredMixin, UpdateView):  # редактировать заявку
     model = Lead
     fields = ('name', 'email', 'description', 'priority', 'status',)
     success_url = reverse_lazy('leads:list')
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
+    # @method_decorator(login_required)
+    # def dispatch(self, *args, **kwargs):
+    #     return super().dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -84,14 +84,14 @@ class LeadUpdateView(UpdateView):  # редактировать заявку
         return queryset.filter(created_by=self.request.user, pk=self.kwargs.get('pk'))
 
 
-class LeadCreateView(CreateView):  # создать заявку
+class LeadCreateView(LoginRequiredMixin, CreateView):  # создать заявку
     model = Lead
     fields = ('name', 'email', 'description', 'priority', 'status',)
     success_url = reverse_lazy('leads:list')
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
-        return super().dispatch(*args, **kwargs)
+    # @method_decorator(login_required)
+    # def dispatch(self, *args, **kwargs):
+    #     return super().dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -112,7 +112,7 @@ class LeadCreateView(CreateView):  # создать заявку
         return redirect(self.get_success_url())
 
 
-class AddFileView(View):
+class AddFileView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
 
@@ -129,7 +129,7 @@ class AddFileView(View):
         return redirect('leads:detail', pk=pk)
 
 
-class AddCommentView(View):
+class AddCommentView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
 
@@ -146,7 +146,7 @@ class AddCommentView(View):
         return redirect('leads:detail', pk=pk)
 
 
-class ConvertToClientView(View):  # добавить в потенциальные клиенты
+class ConvertToClientView(LoginRequiredMixin, View):  # добавить в потенциальные клиенты
     def get(self, request, *args, **kwargs):
         pk = self.kwargs.get('pk')
 
