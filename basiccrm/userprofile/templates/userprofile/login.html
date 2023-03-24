@@ -4,14 +4,14 @@
 
 {% block content %}
     <div class="py-6 px-6">
-        <h1 class="mb-6 text-xl">Log in</h1>
+        <h1 class="mb-6 text-xl">Войти</h1>
 
         <form method="post" action=".">
             {% csrf_token %}
 
             {{ form.as_p }}
 
-            <button class="mt-6 py-4 px-8 bg-teal-500 text-white rounded-xl">Submit</button>
+            <button class="mt-6 py-4 px-8 bg-teal-500 text-white rounded-xl">Отправить</button>
         </form>
     </div>
 {% endblock%}

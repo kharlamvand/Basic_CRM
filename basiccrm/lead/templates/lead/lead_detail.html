@@ -7,21 +7,21 @@
         <h1 class="mb-4 text-xl">{{ lead.name }}</h1>
 
         {% if lead.description %}
-            <p class="font-semibold">Name</p>
+            <p class="font-semibold">Описание:</p>
             <p>{{ lead.description}}</p>
         {% endif%}
 
-        <p class="font-semibold">Priority</p>
+        <p class="font-semibold">Приоритет:</p>
         <p class="mb-2">{{ lead.get_priority_display }}</p>
 
-        <p class="font-semibold">Status</p>
+        <p class="font-semibold">Статус:</p>
         <p class="mb-2">{{ lead.get_status_display }}</p>
 
-        <p class="font-semibold">Created at</p>
-        <p class="mb-2">{{ lead.created_at|date:"M-d-Y H:i" }}</p>
+        <p class="font-semibold">Время создания:</p>
+        <p class="mb-2">{{ lead.created_at }}</p>
 
-        <p class="font-semibold">Modifed at</p>
-        <p class="mb-6">{{ lead.modified_at|date:"M-d-Y H:i" }}</p>
+        <p class="font-semibold">Время обновления:</p>
+        <p class="mb-6">{{ lead.modified_at }}</p>
 
         <hr class="my-4">
 
@@ -29,13 +29,13 @@
             {% csrf_token %}
         </form>
 
-        <a href="{% url 'leads:convert' lead.id %}" class="py-2 px-4 rounded-xl bg-blue-500 text-white">Convert to client</a>
-        <a href="{% url 'leads:edit' lead.id %}" class="py-2 px-4 rounded-xl bg-teal-500 text-white">Edit</a>
-        <a href="#" onclick="document.getElementById('lead_delete_form').submit();" class="py-2 px-4 rounded-xl bg-red-500 text-white">Delete</a>
+        <a href="{% url 'leads:convert' lead.id %}" class="py-2 px-4 rounded-xl bg-blue-500 text-white">Добавить клиента</a>
+        <a href="{% url 'leads:edit' lead.id %}" class="py-2 px-4 rounded-xl bg-teal-500 text-white">Редактировать</a>
+        <a href="#" onclick="document.getElementById('lead_delete_form').submit();" class="py-2 px-4 rounded-xl bg-red-500 text-white">Удалить</a>
 
         <hr class="my-4">
 
-        <h2 class="mb-6 text-xl">Comments</h2>
+        <h2 class="mb-6 text-xl">Осуждения</h2>
 
         <div class="space-y-4">
             {% for comment in lead.comments.all %}
@@ -51,20 +51,20 @@
 
             {{ form.as_p }}
 
-            <button class="py-2 px-4 rounded-xl bg-blue-500 text-white">Submit</button>
+            <button class="py-2 px-4 rounded-xl bg-blue-500 text-white">Отправить</button>
 
         </form>
 
         <hr class="my-4">
 
-        <h2 class="mb-6 text-xl">Files</h2>
+        <h2 class="mb-6 text-xl">Файлы</h2>
 
         <div class="space-y-4">
             {% for file in lead.files.all %}
                 <div class="bg-gray-100 py-6 px-6 rounded-xl">
                     <p class="mb-2"><strong>{{ file.created_by }}</strong> @ {{ file.created_at }}</p>
 
-                    <a href="{{ file.file.url }}">Download</a>
+                    <a href="{{ file.file.url }}">Скачать</a>
                 </div>
             {% endfor %}
         </div>
@@ -74,12 +74,12 @@
 
             {{ fileform.as_p }}
 
-            <button class="py-2 px-4 rounded-xl bg-blue-500 text-white">Submit</button>
+            <button class="py-2 px-4 rounded-xl bg-blue-500 text-white">Отправить</button>
 
         </form>
 
         <hr class="my-4">
 
-        <a href="{% url 'leads:list' %}">Back to leads</a>
+        <a href="{% url 'leads:list' %}">Назад к заявкам</a>
     </div>
 {% endblock %}

@@ -1,10 +1,10 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Add client{% endblock%}
+{% block title %}Добавить клиента{% endblock%}
 
 {% block content %}
     <div class="py-6 px-6">
-        <h1 class="text-xl">Add client</h1>
+        <h1 class="text-xl">Добавить клиента</h1>
 
         {% if team.plan.max_clients > team.clients.all|length %}
             <form method="post" action=".">
@@ -12,11 +12,11 @@
 
                 {{ form.as_p }}
 
-                <button class="py-4 px-8 bg-teal-500 text-white rounded-xl">Submit</button>
+                <button class="py-4 px-8 bg-teal-500 text-white rounded-xl">Отправить</button>
             </form>
         {% else %}
             <div class="mt-6 px-6 py-4 bg-red-400 rounded-xl text-white">
-                Your team have reached maximum number of clients.
+                Ваша команда достигла максимального количества клиентов.
             </div>
         {% endif %}
     </div>
