@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %}{{ client.name }}{% endblock%}
+{% block title %}{{ client.name }}{% endblock %}
 
 {% block content %}
     <div class="py-6 px-6">
@@ -8,8 +8,8 @@
 
         {% if client.description %}
             <p class="font-semibold">Описание:</p>
-            <p>{{ client.description}}</p>
-        {% endif%}
+            <p class="mb-2">{{ client.description }}</p>
+        {% endif %}
 
 
         <p class="font-semibold">Создано: </p>
@@ -20,7 +20,7 @@
 
         <hr class="my-4">
 
-        <a href="{% url 'clients:edit' client.id %}" class="py-2 px-4 rounded-xl bg-teal-500 text-white">Редактировать</a>
+        <a href="{% url 'clients:edit' client.id %}" class="py-2 px-4 rounded-xl bg-sky-700 text-white">Редактировать</a>
         <a href="{% url 'clients:delete' client.id %}" class="py-2 px-4 rounded-xl bg-red-500 text-white">Удалить</a>
 
         <hr class="my-4">
@@ -41,11 +41,9 @@
 
             {{ form.as_p }}
 
-            <button class="py-2 px-4 rounded-xl bg-blue-500 text-white">Отправить</button>
+            <button class="mt-6 py-2 px-4 rounded-xl bg-slate-500 text-white">Отправить</button>
 
         </form>
-        <hr class="my-4">
-
         <hr class="my-4">
 
         <h2 class="mb-6 text-xl">Прикрепленные файлы</h2>
@@ -65,9 +63,11 @@
 
             {{ fileform.as_p }}
 
-            <button class="py-2 px-4 rounded-xl bg-blue-500 text-white">Отправить</button>
+            <button class="mt-6 py-2 px-4 rounded-xl bg-slate-500 text-white">Отправить</button>
 
         </form>
+
+        <hr class="my-4">
 
         <a href="{% url 'clients:list' %}">Назад к клиентам</a>
 

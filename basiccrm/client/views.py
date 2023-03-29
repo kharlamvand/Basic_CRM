@@ -17,7 +17,7 @@ def clients_export(request):
 
     response = HttpResponse(
         content_type='text/csv',
-        headers={'Content-Disposition': 'attachment; filename="somefilename.csv"'},
+        headers={'Content-Disposition': 'attachment; filename="clients.csv"'},
     )
 
     writer = csv.writer(response)
@@ -41,14 +41,13 @@ def clients_list(request):
 @login_required
 def clients_add_file(request, pk):
     client = get_object_or_404(Client, created_by=request.user, pk=pk)
-    team = Team.objects.filter(created_by=request.user)[0]
 
     if request.method == 'POST':
         form = AddFileForm(request.POST, request.FILES)
 
         if form.is_valid():
             file = form.save(commit=False)
-            file.team = team
+            file.team = request.user.userprofile.active_team
             file.client_id = pk
             file.created_by = request.user
             file.save()
@@ -56,17 +55,17 @@ def clients_add_file(request, pk):
             return redirect('clients:detail', pk=pk)
     return redirect('clients:detail', pk=pk)
 
+
 @login_required
 def clients_detail(request, pk):
     client = get_object_or_404(Client, created_by=request.user, pk=pk)
-    team = Team.objects.filter(created_by=request.user)[0]
 
     if request.method == 'POST':
         form = AddCommentForm(request.POST)
 
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.team = team
+            comment.team = request.user.userprofile.active_team
             comment.created_by = request.user
             comment.client = client
             comment.save()
@@ -84,22 +83,20 @@ def clients_detail(request, pk):
 
 @login_required
 def clients_add(request):
-    team = Team.objects.filter(created_by=request.user)[0]
+    team = request.user.userprofile.active_team
 
     if request.method == 'POST':
         form = AddClientForm(request.POST)
 
         if form.is_valid():
-            team = Team.objects.filter(created_by=request.user)[0]
             client = form.save(commit=False)
             client.created_by = request.user
             client.team = team
             client.save()
 
-            messages.success(request, 'The client was created.')
+            messages.success(request, 'Клиент был создан.')
 
             return redirect('clients:list')
-
     else:
         form = AddClientForm()
 
@@ -119,7 +116,7 @@ def clients_edit(request, pk):
         if form.is_valid():
             form.save()
 
-            messages.success(request, 'The changes was saved.')
+            messages.success(request, 'Изменения были сохранены.')
 
             return redirect('clients:list')
     else:
@@ -135,6 +132,6 @@ def clients_delete(request, pk):
     client = get_object_or_404(Client, created_by=request.user, pk=pk)
     client.delete()
 
-    messages.success(request, 'The client was deleted.')
+    messages.success(request, 'Клиент был удален.')
 
     return redirect('clients:list')

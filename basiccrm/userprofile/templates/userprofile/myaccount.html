@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Профиль пользователя{% endblock%}
+{% block title %}Профиль пользователя{% endblock %}
 
 {% block content %}
 <div class="py-6 px-6">
@@ -11,9 +11,14 @@
     </p>
 
     <p class="mb-2">
-        <strong>Группа: </strong><a href="{% url 'team:detail' team.id %}">{{ team.name }}</a>
-        {% if team.created_by == request.user %}
-            <a href="{% url 'team:edit' team.id %}">(Редактировать)</a>
+        {% if active_team %}
+            <strong>Группа: </strong><a href="{% url 'team:detail' active_team.id %}">{{ active_team.name }}</a>
+
+            {% if active_team.created_by == request.user %}
+                <a href="{% url 'team:edit' active_team.id %}">(Редактировать)</a>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'team:list' %}">Select team</a>
         {% endif %}
     </p>
 
@@ -22,3 +27,10 @@
     <a href="{% url 'logout' %}" class="inline-block py-4 px-6 bg-red-600 rounded-xl text-white">Выйти из системы</a>
 </div>
 {% endblock %}
+
+<!--    <p class="mb-2">-->
+<!--        <strong>Группа: </strong><a href="{% url 'team:detail' team.id %}">{{ team.name }}</a>-->
+<!--        {% if team.created_by == request.user %}-->
+<!--            <a href="{% url 'team:edit' team.id %}">(Редактировать)</a>-->
+<!--        {% endif %}-->
+<!--    </p>-->

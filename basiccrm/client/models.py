@@ -26,7 +26,7 @@ class Comment(models.Model):
     team = models.ForeignKey(Team, related_name='client_comments', on_delete=models.CASCADE, verbose_name='Команда')
     client = models.ForeignKey(Client, related_name='comments', on_delete=models.CASCADE, verbose_name='Клиент')
     content = models.TextField(blank=True, null=True, verbose_name='Добавить комментарий')
-    created_by = models.ForeignKey(User, related_name='client_comments', on_delete=models.CASCADE, verbose_name='Создано')
+    created_by = models.ForeignKey(User, related_name='client_comments', on_delete=models.CASCADE, verbose_name='Создан')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Создано в')
 
     class Meta:
