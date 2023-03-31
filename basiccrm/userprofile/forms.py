@@ -10,7 +10,7 @@ class LoginForm(AuthenticationForm):
         'placeholder': 'Ваш логин',
         'class': INPUT_CLASS
     }))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={
+    password = forms.CharField(label="Пароль", widget=forms.PasswordInput(attrs={
         'placeholder': 'Ваш пароль',
         'class': INPUT_CLASS
     }))
@@ -21,7 +21,7 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ('username', 'email', 'password1', 'password2')
 
-    username = forms.CharField(widget=forms.TextInput(attrs={
+    username = forms.CharField(label="Логин", widget=forms.TextInput(attrs={
         'placeholder': 'Ваш логин',
         'class': INPUT_CLASS
     }))
@@ -29,11 +29,11 @@ class SignupForm(UserCreationForm):
         'placeholder': 'Ваш электронный адрес',
         'class': INPUT_CLASS
     }))
-    password1 = forms.CharField(widget=forms.PasswordInput(attrs={
+    password1 = forms.CharField(label="Пароль", widget=forms.PasswordInput(attrs={
         'placeholder': 'Ваш пароль',
         'class': INPUT_CLASS
     }))
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs={
+    password2 = forms.CharField(label="Повтор пароля", widget=forms.PasswordInput(attrs={
         'placeholder': 'Повторите пароль',
         'class': INPUT_CLASS
     }))
