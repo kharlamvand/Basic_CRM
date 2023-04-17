@@ -4,6 +4,7 @@ __pypackages__/
 
 tailwindcss
 
+media/
 # Environments
 .env
 .venv
