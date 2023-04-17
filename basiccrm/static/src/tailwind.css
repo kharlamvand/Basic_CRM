@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header-btn {
+  @apply dark:border-indigo-500 dark:text-indigo-500 dark:hover:bg-indigo-500 dark:hover:text-white transition duration-300 py-1 px-3 ml-2 border-2 rounded-full border-indigo-600 text-indigo-600 hover:text-white hover:bg-indigo-800 focus:outline-none focus:ring focus:ring-violet-300;
+}
+
+.btn-blue {
+  @apply inline-flex items-center justify-center rounded-md bg-primary py-4 px-10 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-8 xl:px-10;
+}
+
+.btn-blue1 {
+  @apply inline-flex items-center justify-center rounded-md bg-primary py-4 px-10 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-8 xl:px-10;
+}
+
+
+.btn-red {
+  @apply inline-flex items-center justify-center rounded-md bg-red-400 py-4 px-10 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-8 xl:px-10 ;
+}
+
+
+
+.btn-edit {
+  @apply inline-flex items-center justify-center rounded-md border border-primary py-4 px-10 text-center text-base text-primary transition hover:border-primary hover:bg-primary hover:text-white lg:px-8 xl:px-10;
+}
+
+.bg-comment {
+  @apply w-full  bg-gray rounded-lg border-[1.5px] border-primary py-3 px-5 font-medium text-body-color placeholder-body-color outline-none;
+}
+
+.bg-comment1 {
+  @apply w-1/2 rounded-lg border-[1.5px] border-form-stroke py-3 px-5 font-medium text-body-color placeholder-body-color outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-[#F5F7FD];
+}
+
+.bg-download {
+  @apply w-full cursor-pointer rounded-lg border-[1.5px] border-form-stroke font-medium text-body-color placeholder-body-color outline-none transition file:mr-5 file:border-collapse file:cursor-pointer file:border-0 file:border-r file:border-solid file:border-form-stroke file:bg-[#F5F7FD] file:py-3 file:px-5 file:text-body-color file:hover:bg-primary file:hover:bg-opacity-10 focus:border-primary active:border-primary disabled:cursor-default disabled:bg-[#F5F7FD];
+}
+
+.bg-form {
+  @apply w-1/2  mb-4 rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none;
+}
+.bg-forms {
+  @apply border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-primary focus-visible:shadow-none mb-2;
+}

@@ -3,8 +3,10 @@
 {% block title %}{{ lead.name }}{% endblock %}
 
 {% block content %}
-    <div class="py-6 px-6">
-        <h1 class="mb-4 text-xl">{{ lead.name }}</h1>
+    <div class="container mx-auto text-base">
+        <h1 class="mt-4 mb-4 text-3xl font-bold text-dark">{{ lead.name }}</h1>
+
+        <div class="mb-6 bg-comment" >
 
         {% if lead.description %}
             <p class="font-semibold">Описание:</p>
@@ -23,23 +25,24 @@
         <p class="font-semibold">Время обновления:</p>
         <p class="mb-6">{{ lead.modified_at }}</p>
 
-        <hr class="my-4">
+        </div>
+
 
         <form id="lead_delete_form" method="post" action="{% url 'leads:delete' lead.id %}">
             {% csrf_token %}
         </form>
 
-        <a href="{% url 'leads:convert' lead.id %}" class="py-2 px-4 rounded-xl bg-slate-500 text-white">Добавить клиента</a>
-        <a href="{% url 'leads:edit' lead.id %}" class="py-2 px-4 rounded-xl bg-sky-700 text-white">Редактировать</a>
-        <a href="#" onclick="document.getElementById('lead_delete_form').submit();" class="py-2 px-4 rounded-xl bg-red-500 text-white">Удалить</a>
+        <a href="{% url 'leads:convert' lead.id %}" class="btn-edit">Добавить клиента</a>
+        <a href="{% url 'leads:edit' lead.id %}" class="btn-edit">Редактировать</a>
+        <a href="#" onclick="document.getElementById('lead_delete_form').submit();" class="btn-edit">Удалить</a>
 
-        <hr class="my-4">
+        <hr class="mb-10 mt-10 my-4">
 
-        <h2 class="mb-6 text-xl">Обсуждения</h2>
+        <h2 class="mb-6 text-xl">Примечания</h2>
 
         <div class="space-y-4">
             {% for comment in lead.comments.all %}
-                <div class="bg-gray-100 py-6 px-6 rounded-xl">
+                <div class="bg-comment">
                     <p class="mb-2"><strong>{{ comment.created_by }}</strong> @ {{ comment.created_at }}</p>
 
                     {{ comment.content }}
@@ -47,25 +50,29 @@
             {% endfor %}
         </div>
 
+        <hr class="mb-10 mt-10 my-4">
+
+<!--        <h2 class="mb-6 text-xl">Введите примечания</h2>-->
+
         <form method="post" action="{% url 'leads:add_comment' lead.id %}">
             {% csrf_token %}
 
             {{ form.as_p }}
 
-            <button class="mt-6 py-2 px-4 rounded-xl bg-slate-500 text-white">Отправить</button>
+            <button class="mt-6 btn-edit">Отправить</button>
 
         </form>
 
-        <hr class="my-4">
+        <hr class="mb-10 mt-10 my-4">
 
-        <h2 class="mb-6 text-xl">Файлы</h2>
+        <h2 class="mb-6 text-xl">Прикрепленные файлы</h2>
 
-        <div class="space-y-4">
+        <div class="mb-6 space-y-4">
             {% for file in lead.files.all %}
-                <div class="bg-gray-100 py-6 px-6 rounded-xl">
-                    <p class="mb-2"><strong>{{ file.created_by }}</strong> @ {{ file.created_at }}</p>
+                <div class="bg-comment">
+                    <p class="mb-2"><strong>{{ file.created_by }}</strong> | {{ file.created_at }}</p>
 
-                    <a href="{{ file.file.url }}">Скачать</a>
+                    <a href="{{ file.file.url }}" target="_blank">&laquo; Скачать &raquo;</a>
                 </div>
             {% endfor %}
         </div>
@@ -75,12 +82,12 @@
 
             {{ fileform.as_p }}
 
-            <button class="mt-6 py-2 px-4 rounded-xl bg-slate-500 text-white">Отправить</button>
+            <button class="mt-6 btn-edit">Отправить</button>
 
         </form>
 
         <hr class="my-4">
 
-        <a href="{% url 'leads:list' %}">Назад к заявкам</a>
+        <a href="{% url 'leads:list' %}">&lArr;  Назад к заявкам</a>
     </div>
 {% endblock %}

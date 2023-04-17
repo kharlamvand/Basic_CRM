@@ -3,73 +3,84 @@
 {% block title %}{{ client.name }}{% endblock %}
 
 {% block content %}
-    <div class="py-6 px-6">
-        <h1 class="mb-4 text-xl">{{ client.name }}</h1>
+    <div class="container mx-auto text-base">
+
+
+        <h1 class="mt-4 mb-4 text-3xl font-bold text-dark">{{ client.name }}</h1>
+
+        <div class="mb-6 bg-comment" >
 
         {% if client.description %}
             <p class="font-semibold">Описание:</p>
-            <p class="mb-2">{{ client.description }}</p>
+            <p class="mb-2 ">{{ client.description }}</p>
         {% endif %}
 
 
         <p class="font-semibold">Создано: </p>
-        <p class="mb-2">{{ client.created_at }}</p>
+        <p class="mb-2 ">{{ client.created_at }}</p>
 
         <p class="font-semibold">Изменено:</p>
         <p class="mb-6">{{ client.modified_at }}</p>
+        </div>
 
-        <hr class="my-4">
 
-        <a href="{% url 'clients:edit' client.id %}" class="py-2 px-4 rounded-xl bg-sky-700 text-white">Редактировать</a>
-        <a href="{% url 'clients:delete' client.id %}" class="py-2 px-4 rounded-xl bg-red-500 text-white">Удалить</a>
+        <a href="{% url 'clients:edit' client.id %}" class="btn-edit">Редактировать</a>
+        <a href="{% url 'clients:delete' client.id %}" class="btn-edit">Удалить</a>
 
-        <hr class="my-4">
+        <hr class="mb-10 mt-10 my-4">
 
-        <h2 class="mb-6 text-xl">Обсуждения</h2>
+        <h2 class="mb-6 text-xl">Заметки</h2>
 
-        <div class="space-y-4">
+        <div class="mb-6 space-y-4">
             {% for comment in client.comments.all %}
-                <div class="bg-gray-100 py-6 px-6 rounded-xl">
-                    <p class="mb-2"><strong>{{ comment.created_by }}</strong> @ {{ comment.created_at }}</p>
-                    {{ comment.content }}
+                <div class="bg-comment">
+                    <p class="mb-2"><strong>{{ comment.created_by }}</strong> | {{ comment.created_at }}</p>
+                    &quot; {{ comment.content }}	&quot;
                 </div>
             {% endfor %}
         </div>
 
-        <form method="post" action="{% url 'clients:add_comment' client.id %}">
+        <hr class="mb-10 mt-10 my-4">
+
+<!--        <h2 class="mb-6 text-xl">Введите заметки</h2>-->
+
+        <form method="post" action="{% url 'clients:add_comment' client.id %}"  >
             {% csrf_token %}
 
             {{ form.as_p }}
 
-            <button class="mt-6 py-2 px-4 rounded-xl bg-slate-500 text-white">Отправить</button>
+            <button class="mt-6 btn-edit">Отправить</button>
 
         </form>
-        <hr class="my-4">
 
-        <h2 class="mb-6 text-xl">Прикрепленные файлы</h2>
+        <hr class="mb-10 mt-10 my-4">
 
-        <div class="space-y-4">
+        <h2 class="mb-4 text-xl">Прикрепленные файлы</h2>
+
+        <div class=" mb-6 space-y-4">
             {% for file in client.files.all %}
-                <div class="bg-gray-100 py-6 px-6 rounded-xl">
-                    <p class="mb-2"><strong>{{ file.created_by }}</strong> @ {{ file.created_at }}</p>
+                <div class="bg-comment">
+                    <p class="mb-2"><strong>{{ file.created_by }}</strong> | {{ file.created_at }}</p>
 
-                    <a href="{{ file.file.url }}">Скачать</a>
+                    <a href="{{ file.file.url }}" target="_blank">&laquo; Скачать &raquo;</a>
                 </div>
             {% endfor %}
         </div>
+         <hr class="mb-10 mt-10 my-4">
 
         <form method="post" action="{% url 'clients:add_file' client.id %}" enctype="multipart/form-data">
-            {% csrf_token %}
+            <div class="bg-comment1" >
+                {% csrf_token %}
 
-            {{ fileform.as_p }}
-
-            <button class="mt-6 py-2 px-4 rounded-xl bg-slate-500 text-white">Отправить</button>
+                {{ fileform.as_p }}
+            </div>
+            <button class="mt-6 btn-edit">Отправить</button>
 
         </form>
 
-        <hr class="my-4">
+        <hr class=" mb-10 mt-10 my-4">
 
-        <a href="{% url 'clients:list' %}">Назад к клиентам</a>
+        <a href="{% url 'clients:list' %}">&lArr; Назад к клиентам</a>
 
     </div>
 {% endblock %}

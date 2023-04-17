@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   fill="none"
+   height="40"
+   viewBox="0 0 160 40"
+   width="160"
+   version="1.1"
+   id="svg113"
+   sodipodi:docname="logo1.svg"
+   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs117" />
+  <sodipodi:namedview
+     id="namedview115"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="11.125"
+     inkscape:cx="84"
+     inkscape:cy="19.460674"
+     inkscape:window-width="1920"
+     inkscape:window-height="1021"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g111" />
+  <clipPath
+     id="a">
+    <path
+       d="m0 0h40v40h-40z"
+       id="path80" />
+  </clipPath>
+  <g
+     clip-path="url(#a)"
+     fill="#3056d3"
+     id="g91">
+    <path
+       d="m39.9359 18.352c-.0196-.1996-.112-.3849-.2595-.5206-.1476-.1358-.34-.2125-.5405-.2154h-19.9359c-.5414.0132-1.0699.1678-1.533.4485s-.8448.6777-1.107 1.1515c-.2428.4237-.3705.9036-.3705 1.392 0 .4883.1277.9682.3705 1.392.0693.1332.1721.2461.2984.3275.1263.0813.2715.1284.4215.1365h21.9041c.2005-.003.3929-.0797.5404-.2154.1476-.1358.2399-.3211.2596-.5206 0-.624 0-1.152 0-1.6s-.0001-1.168-.0481-1.776z"
+       opacity=".72"
+       id="path83" />
+    <path
+       d="m39.9203 18.352c-.0159-.1982-.1049-.3833-.2498-.5194s-.3354-.2133-.5342-.2166h-3.2c-.1122.0012-.223.0261-.325.073-.102.0468-.1929.1146-.267.199-.0746.0811-.1305.1775-.1636.2826-.0332.1051-.0428.2161-.0284.3254v1.6c-.004 2.5531-.651 5.0641-1.8814 7.3011-1.2304 2.2371-3.0046 4.1282-5.1586 5.4989-.224.144-.4319.32-.6719.448-1.1741.6686-2.4337 1.1746-3.7441 1.504l2.0961 3.728c.0711.1232.1739.2253.2976.2956.1238.0703.264.1063.4063.1044.0846.0153.1714.0153.256 0l.512-.208.464-.192c.7078-.294 1.3971-.6306 2.0641-1.008 3.1195-1.7573 5.7115-4.3179 7.5066-7.4158 1.7952-3.0978 2.7279-6.6199 2.7014-10.2002 0-.592-.0321-1.056-.0801-1.6z"
+       id="path85" />
+    <path
+       d="m28.5951 33.5387c-.1075-.1825-.2784-.3192-.4801-.384h-.224c-.1389.0011-.2757.0339-.4.096-2.2815 1.2982-4.8629 1.9767-7.4879 1.968-4.0287-.0085-7.8899-1.6126-10.73865-4.4613-2.84872-2.8488-4.45287-6.71-4.46133-10.7387.00846-4.0287 1.61261-7.89 4.46133-10.73871 2.84875-2.84873 6.70995-4.45286 10.73865-4.46132 2.6238.00084 5.2028.67868 7.4879 1.96799.1195.07582.2586.11478.4.112h.176c.1097-.02421.2132-.07081.3041-.13689.0908-.06607.1672-.1502.224-.2471l1.6-2.784c.1058-.18516.1349-.40437.0811-.6107-.0539-.20634-.1864-.3834-.3692-.4933-3.0116-1.701895-6.4126-2.5948726-9.8718-2.5919951-5.3018.0084625-10.38396 2.1183151-14.13286 5.8672151-3.74889 3.74889-5.8587213 8.83101-5.8671838 14.13281.0084625 5.3017 2.1182938 10.3839 5.8671838 14.1328 3.7489 3.7489 8.83106 5.8587 14.13286 5.8672 3.4592.0028 6.8602-.8901 9.8718-2.592.0916-.0514.1719-.1206.2362-.2036.0642-.083.1112-.178.138-.2795.0269-.1015.0332-.2073.0184-.3112s-.0504-.2038-.1045-.2937z"
+       id="path87" />
+    <path
+       d="m22.2883 22.4h-5.0559c-.1434-.0102-.2823-.0548-.4049-.13-.1225-.0752-.2251-.1788-.2992-.302l9.2961 16.464c.0712.1233.1739.2253.2977.2957.1237.0703.2639.1063.4062.1043.09.0152.1821.0152.2721 0 1.0572-.3806 2.0797-.8517 3.056-1.408.0916-.0514.1717-.1206.236-.2036.0643-.0829.1112-.178.1381-.2795.0268-.1014.0331-.2073.0183-.3112s-.0503-.2038-.1045-.2937z"
+       opacity=".56"
+       id="path89" />
+  </g>
+  <g
+     fill="#090e34"
+     id="g111"
+     transform="translate(-10.915785,-2.4712188)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:18px;line-height:0;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:-0.3px;fill:#090e34;fill-opacity:1;stroke-width:1.178;stroke-dasharray:none;word-spacing:0px"
+       x="75.599113"
+       y="21.996227"
+       id="text626"
+       transform="matrix(0.76092757,0.00231534,-0.00244172,1.3141781,0,0)"
+       inkscape:transform-center-x="2.6230256"
+       inkscape:transform-center-y="-0.23179102"><tspan
+         sodipodi:role="line"
+         id="tspan624"
+         x="75.599113"
+         y="21.996227"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#090e34;fill-opacity:1;stroke-width:1.178;stroke-dasharray:none;font-size:18px"
+         dx="0">Basic <tspan
+   style="stroke:none;stroke-opacity:1;font-size:18px"
+   id="tspan6301">CRM</tspan></tspan></text>
+  </g>
+</svg>

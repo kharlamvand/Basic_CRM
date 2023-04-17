@@ -3,24 +3,23 @@
 {% block title %}Клиенты{% endblock%}
 
 {% block content %}
-    <div class="py-6 px-6">
-        <h1 class="mb-4 text-xl">Клиенты</h1>
+    <div class="container mx-auto text-base">
+        <h1 class="mt-4 mb-4 text-3xl font-bold text-dark">Клиенты</h1>
 
-        <a href="{% url 'clients:add' %}" class="inline-block py-4 px-6 bg-sky-800 rounded-xl text-white">Добавить клиента</a>
-        <a href="{% url 'clients:export' %}" class="inline-block py-4 px-6 rounded-xl bg-sky-500 text-white">Экспорт клиентов</a>
+        <a href="{% url 'clients:add' %}" class="btn-blue">Добавить клиента</a>
+        <a href="{% url 'clients:export' %}" class="btn-edit">Экспорт клиентов</a>
 
         {% if clients %}
             <div class="mt-6 flex justify-between">
-                <p class="py-4 px-2 bg-gray-200 font-semibold w-full">Имя</p>
+                <p class="py-4 px-2 border-[1.5px] border-primary font-semibold w-full">Имя</p>
             </div>
 
             {% for client in clients %}
                 <div class="flex justify-between">
-                    <p class="py-2 px-2 w-full {% cycle 'bg-gray-100' '' %}">
+                    <p class="py-2 px-2 w-full {% cycle 'bg-gray' '' %}">
                         <a href="{% url 'clients:detail' client.id %}">{{ client.name }}</a>
                     </p>
                 </div>
-<!--            {% empty %}-->
             {% endfor %}
         {% else %}
             <p class="mt-6 px-2">В базе данных пока нет клиентов...</p>

@@ -3,15 +3,15 @@
 {% block title %}Редактировать клиента{% endblock%}
 
 {% block content %}
-    <div class="py-6 px-6">
-        <h1 class="text-xl">Редактировать клиента</h1>
+    <div class="container mx-auto text-base">
+        <h1 class="mt-4 mb-4 text-2xl font-bold text-dark">Редактировать клиента</h1>
 
         <form method="post" action=".">
             {% csrf_token %}
 
             {{ form.as_p }}
 
-            <button class="py-4 px-8 bg-sky-700 text-white rounded-xl">Отправить</button>
+            <button class="btn-edit">Отправить</button>
         </form>
     </div>
 {% endblock %}

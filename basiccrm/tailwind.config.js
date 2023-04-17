@@ -7,9 +7,11 @@ module.exports = {
     'lead/templates/lead/*.html',
     'team/templates/team/*.html',
     'userprofile/templates/userprofile/*.html',
-  ],
+    './*.html',
+    './assets/**/*.js'],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tailgrids/plugin")],
 }
+
